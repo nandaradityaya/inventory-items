@@ -116,7 +116,7 @@
                         <div class="card-header"><strong>Daftar Barang dengan Stok Kurang dari 10</strong></div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <td>No</td>
@@ -145,39 +145,6 @@
                             </div>
                         </div>				
                     </div>
-
-			        <div class="row">
-			          	<div class="col-md-6">
-							<div class="card shadow">
-								<div class="card-header"><strong>Profil SIM</strong></div>
-								<div class="card-body">
-									<strong>Nama SIM : </strong><br>
-									<input  type="text" value="<?= $toko->nama_toko ?>" readonly class="form-control mt-2 mb-2">
-									<strong>Nama Pemilik : </strong><br>
-									<input  type="text" value="<?= $toko->nama_pemilik ?>" readonly class="form-control mt-2 mb-2">
-									<strong>No Telepon : </strong><br>
-									<input  type="text" value="<?= $toko->no_telepon ?>" readonly class="form-control mt-2 mb-2">
-									<strong>Alamat : </strong><br>
-									<input  type="text" value="<?= $toko->alamat ?>" readonly class="form-control mt-2">
-								</div>				
-							</div>
-			          	</div>
-			          	<div class="col-md-6">
-							<div class="card shadow">
-								<div class="card-header"><strong>User Sedang Login</strong></div>
-								<div class="card-body">
-									<strong>Nama : </strong><br>
-									<input type="text" value="<?= $this->session->login['nama'] ?>" readonly class="form-control mt-2 mb-2">
-									<strong>Username : </strong><br>
-									<input type="text" value="<?= $this->session->login['username'] ?>" readonly class="form-control mt-2 mb-2">
-									<strong>Role : </strong><br>
-									<input type="text" value="<?= $this->session->login['role'] ?>" readonly class="form-control mt-2 mb-2">
-									<strong>Jam Login : </strong><br>
-									<input type="text" value="<?= $this->session->login['jam_masuk'] ?>" readonly class="form-control mt-2">
-								</div>				
-							</div>
-			          	</div>
-			        </div>
 
 				</div>
 			</div>

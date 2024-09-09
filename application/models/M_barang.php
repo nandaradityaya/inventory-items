@@ -68,5 +68,16 @@ class M_barang extends CI_Model{
 		$query = $this->db->get($this->_table);
 		return $query->result();
 	}
+
+	public function lihat_kode($kode_barang) {
+        $this->db->where('kode_barang', $kode_barang);
+        $query = $this->db->get($this->_table);
+        return $query->row();
+    }
 	
+
+    public function update_stok($kode_barang, $stok) {
+        $this->db->where('kode_barang', $kode_barang);
+        return $this->db->update($this->_table, ['stok' => $stok]);
+    }
 }
