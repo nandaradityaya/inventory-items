@@ -4,8 +4,12 @@ class M_barang extends CI_Model{
 	protected $_table = 'barang';
 
 	public function lihat(){
-		$query = $this->db->get($this->_table);
-		return $query->result();
+		// $query = $this->db->get($this->_table);
+		// return $query->result();
+
+		$this->db->select('barang.*, kategori.nama_kategori');
+        $this->db->join('kategori', 'barang.id_kategori = kategori.id_kategori', 'left');
+        return $this->db->get($this->_table)->result();
 	}
 
 	public function jumlah(){
@@ -58,4 +62,11 @@ class M_barang extends CI_Model{
 	public function hapus($kode_barang){
 		return $this->db->delete($this->_table, ['kode_barang' => $kode_barang]);
 	}
+
+	public function lihat_stok_minimal(){
+		$this->db->where('stok <', 10);
+		$query = $this->db->get($this->_table);
+		return $query->result();
+	}
+	
 }

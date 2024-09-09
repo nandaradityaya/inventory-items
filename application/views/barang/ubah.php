@@ -39,6 +39,15 @@
 											<label for="nama_barang"><strong>Nama Barang</strong></label>
 											<input type="text" name="nama_barang" placeholder="Masukkan Nama Barang" autocomplete="off"  class="form-control" required value="<?= $barang->nama_barang ?>">
 										</div>
+										<div class="form-group col-md-6">
+                                            <label for="id_kategori"><strong>Kategori</strong></label>
+                                            <select name="id_kategori" class="form-control" required>
+                                                <option value="">Pilih Kategori</option>
+                                                <?php foreach ($all_kategori as $kategori): ?>
+                                                    <option value="<?= $kategori->id_kategori ?>" <?= $kategori->id_kategori == $barang->id_kategori ? 'selected' : '' ?>><?= $kategori->nama_kategori ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-6">

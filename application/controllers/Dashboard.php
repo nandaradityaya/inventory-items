@@ -25,6 +25,8 @@ class Dashboard extends CI_Controller{
 		$this->data['jumlah_penerimaan'] = $this->m_penerimaan->jumlah();
 		$this->data['jumlah_pengguna'] = $this->m_pengguna->jumlah();
 		$this->data['toko'] = $this->m_toko->lihat();
+		$this->data['barang_stok_minimal'] = $this->m_barang->lihat_stok_minimal();
+		$this->data['no'] = 1;
 		$this->load->view('dashboard', $this->data);
 	}
 }

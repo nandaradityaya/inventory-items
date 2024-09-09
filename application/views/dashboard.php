@@ -58,11 +58,11 @@
 
 			            <!-- Earnings (Monthly) Card Example -->
 			            <div class="col-xl-3 col-md-6 mb-4">
-			              <div class="card border-left-success shadow h-100 py-2">
+			              <div class="card border-left-danger shadow h-100 py-2">
 			                <div class="card-body">
 			                  <div class="row no-gutters align-items-center">
 			                    <div class="col mr-2">
-			                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah User</div>
+			                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Jumlah Barang Rusak</div>
 			                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_petugas ?></div>
 			                    </div>
 			                    <div class="col-auto">
@@ -96,11 +96,11 @@
 
 			            <!-- Pending Requests Card Example -->
 			            <div class="col-xl-3 col-md-6 mb-4">
-			              <div class="card border-left-warning shadow h-100 py-2">
+			              <div class="card border-left-success shadow h-100 py-2">
 			                <div class="card-body">
 			                  <div class="row no-gutters align-items-center">
 			                    <div class="col mr-2">
-			                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Jumlah Penerimaan</div>
+			                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Penerimaan</div>
 			                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_penerimaan ?></div>
 			                    </div>
 			                    <div class="col-auto">
@@ -111,6 +111,40 @@
 			              </div>
 			            </div>
 			        </div>
+
+					<div class="card shadow">
+                        <div class="card-header"><strong>Daftar Barang dengan Stok Kurang dari 10</strong></div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <td>No</td>
+                                            <td>Kode Barang</td>
+                                            <td>Nama Barang</td>
+                                            <td>Stok</td>
+                                            <td>Satuan</td>
+                                            <td>Keterangan</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($barang_stok_minimal as $barang): ?>
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $barang->kode_barang ?></td>
+                                                <td><?= $barang->nama_barang ?></td>
+                                                <td>
+                                                    <span class="badge badge-danger"><?= $barang->stok ?></span>
+                                                </td>
+                                                <td><?= $barang->satuan ?></td>
+                                                <td><?= $barang->keterangan ?></td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>				
+                    </div>
 
 			        <div class="row">
 			          	<div class="col-md-6">

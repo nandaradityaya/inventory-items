@@ -50,7 +50,9 @@
 										<td>No</td>
 										<td>Kode Barang</td>
 										<td>Nama Barang</td>
+										<td>Kategori</td>
 										<td>Stok</td>
+										<!-- <td>Status</td> -->
 										<td>Keterangan</td>						
 										<td>Aksi</td>		
 									</tr>
@@ -61,7 +63,15 @@
 											<td><?= $no++ ?></td>
 											<td><?= $barang->kode_barang ?></td>
 											<td><?= $barang->nama_barang ?></td>
-											<td><?= $barang->stok ?> <?= strtoupper($barang->satuan) ?></td>
+											<td><?= $barang->nama_kategori ?></td>
+											<!-- <td><?= $barang->stok ?> <?= strtoupper($barang->satuan) ?></td> -->
+											<td>
+												<?php if ($barang->stok < 10): ?>
+													<span class="badge badge-danger"><?= $barang->stok ?> <?= strtoupper($barang->satuan) ?></span>
+												<?php else: ?>
+													<span class="badge badge-success"><?= $barang->stok ?> <?= strtoupper($barang->satuan) ?></span>
+												<?php endif; ?>
+											</td>
 											<td><?= $barang->keterangan ?></td>
 												<td>
 													<a href="<?= base_url('barang/ubah/' . $barang->kode_barang) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></i>&nbsp;&nbsp;Edit</a>
