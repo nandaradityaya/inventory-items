@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-box"></i>
@@ -16,6 +16,12 @@
 			<div class="sidebar-heading">
 				Master
 			</div>
+
+			<li class="nav-item <?= $aktif == 'kategori' ? 'active' : '' ?>">
+				<a class="nav-link" href="<?= base_url('kategori') ?>">
+					<i class="fas fa-fw fa-box"></i>
+					<span>Kategori Barang</span></a>
+			</li>
 
 			<li class="nav-item <?= $aktif == 'barang' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('barang') ?>">
