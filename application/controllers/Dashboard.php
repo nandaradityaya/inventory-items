@@ -13,6 +13,7 @@ class Dashboard extends CI_Controller{
 		$this->load->model('M_penerimaan', 'm_penerimaan');
 		$this->load->model('M_pengguna', 'm_pengguna');
 		$this->load->model('M_toko', 'm_toko');
+		$this->load->model('M_barang_rusak', 'm_barang_rusak');
 	}
 
 	public function index(){
@@ -26,6 +27,7 @@ class Dashboard extends CI_Controller{
 		$this->data['jumlah_pengguna'] = $this->m_pengguna->jumlah();
 		$this->data['toko'] = $this->m_toko->lihat();
 		$this->data['barang_stok_minimal'] = $this->m_barang->lihat_stok_minimal();
+		$this->data['total_barang_rusak'] = $this->m_barang_rusak->get_total_barang_rusak();
 		$this->data['no'] = 1;
 		$this->load->view('dashboard', $this->data);
 	}

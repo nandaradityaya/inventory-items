@@ -16,5 +16,10 @@ class M_barang_rusak extends CI_Model {
         $this->db->where('kode_barang', $kode_barang);
         return $this->db->update('barang');
     }
-    
+
+    public function get_total_barang_rusak() {
+        $this->db->select_sum('jumlah_rusak');
+        $query = $this->db->get('barang_rusak'); // Ganti 'barang_rusak' dengan nama tabel yang sesuai
+        return $query->row()->jumlah_rusak;
+    }
 }
