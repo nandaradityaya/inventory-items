@@ -46,7 +46,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <td>No</td>
@@ -86,5 +86,8 @@
         </div>
     </div>
     <?php $this->load->view('partials/js.php') ?>
+    <script src="<?= base_url('sb-admin/js/demo/datatables-demo.js') ?>"></script>
+	<script src="<?= base_url('sb-admin') ?>/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="<?= base_url('sb-admin') ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 </body>
 </html>

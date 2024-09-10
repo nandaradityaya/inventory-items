@@ -19,7 +19,7 @@
 
 			<li class="nav-item <?= $aktif == 'kategori' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('kategori') ?>">
-					<i class="fas fa-fw fa-box"></i>
+					<i class="fas fa-fw fa-list"></i>
 					<span>Kategori Barang</span></a>
 			</li>
 
@@ -29,9 +29,15 @@
 					<span>Stok Barang</span></a>
 			</li>
 
+			<li class="nav-item <?= $aktif == 'laporan' ? 'active' : '' ?>">
+				<a class="nav-link" href="<?= base_url('laporan') ?>">
+					<i class="fas fa-fw fa-file-invoice"></i>
+					<span>Laporan</span></a>
+			</li>
+
 			<li class="nav-item <?= $aktif == 'barang_rusak' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('barang_rusak') ?>">
-					<i class="fas fa-fw fa-box"></i>
+					<i class="fas fa-fw fa-times"></i>
 					<span>Barang Rusak</span></a>
 			</li>
 

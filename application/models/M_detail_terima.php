@@ -16,14 +16,15 @@ class M_detail_terima extends CI_Model {
 	}
 
 	public function lihat_by_date($tanggal) {
-        $this->db->select('nama_barang, SUM(jumlah) as jumlah');
-        $this->db->from('detail_terima');
-        $this->db->join('penerimaan', 'detail_terima.no_terima = penerimaan.no_terima');
-        $this->db->where('penerimaan.tgl_terima', $tanggal);
-        $this->db->group_by('nama_barang');
-        $query = $this->db->get();
-        return $query->result_array();
-    }
+		$this->db->select('nama_barang, SUM(jumlah) as jumlah');
+		$this->db->from('detail_terima');
+		$this->db->join('penerimaan', 'detail_terima.no_terima = penerimaan.no_terima');
+		$this->db->where('penerimaan.tgl_terima', $tanggal);
+		$this->db->group_by('nama_barang');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+	
 
     public function lihat_all() {
         $this->db->select('nama_barang, SUM(jumlah) as jumlah');

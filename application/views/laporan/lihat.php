@@ -43,36 +43,41 @@
 				<div class="card shadow">
 					<div class="card-header"><strong>Daftar Barang</strong></div>
 					<div class="card-body">
-                    <form action="<?= site_url('laporan/index') ?>" method="post">
-        <label for="tanggal">Tanggal:</label>
-        <input type="date" id="tanggal" name="tanggal" value="<?= $tanggal ?>" placeholder="dd/mm/yyyy">
-        <input type="submit" value="Filter">
-    </form>
+                        <div class="text-center">
+                        <form action="<?= site_url('laporan/index') ?>" method="post">
+                            <label for="tanggal">Tanggal:</label>
+                            <input type="text" autocomplete="off" id="tanggal" name="tanggal" value="<?= $tanggal ?>" placeholder="dd/mm/yyyy">
+                            <!-- <input type="submit" value="Filter"> -->
+                            <button type="submit" class="btn btn-outline-primary btn-sm">Filter</button>
+                        </form>
+                        </div>
 
-    
-
-    <?php if (!empty($laporan)): ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nama Barang</th>
-                    <th>Jumlah Masuk</th>
-                    <th>Jumlah Keluar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($laporan as $nama_barang => $data): ?>
-                    <tr>
-                        <td><?= $nama_barang ?></td>
-                        <td><?= isset($data['masuk']) ? $data['masuk'] : 0 ?></td>
-                        <td><?= isset($data['keluar']) ? $data['keluar'] : 0 ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>Tidak ada data untuk ditampilkan.</p>
-    <?php endif; ?>
+                        <div class="table-responsive">
+                            <?php if (!empty($laporan)): ?>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Barang</th>
+                                            <th>Jumlah Masuk</th>
+                                            <th>Jumlah Keluar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($laporan as $nama_barang => $data): ?>
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $nama_barang ?></td>
+                                                <td><?= isset($data['masuk']) ? $data['masuk'] : 0 ?></td>
+                                                <td><?= isset($data['keluar']) ? $data['keluar'] : 0 ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            <?php else: ?>
+                                <p>Tidak ada data untuk ditampilkan.</p>
+                            <?php endif; ?>
+                        </div>
 					</div>				
 				</div>
 				</div>
