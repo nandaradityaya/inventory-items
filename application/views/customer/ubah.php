@@ -25,24 +25,24 @@
 				</div>
 				<hr>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="card shadow">
 							<div class="card-header"><strong>Isi Form Dibawah Ini!</strong></div>
 							<div class="card-body">
 								<form action="<?= base_url('customer/proses_ubah/' . $customer->kode) ?>" id="form-tambah" method="POST">
 									<div class="form-row">
-										<div class="form-group col-md-6">
+										<div class="form-group col-md-12">
 											<label for="kode"><strong>Kode</strong></label>
 											<input type="text" name="kode" placeholder="Masukkan Kode customer" autocomplete="off"  class="form-control" required value="<?= $customer->kode ?>" maxlength="8" readonly>
 										</div>
-										<div class="form-group col-md-6">
+										<div class="form-group col-md-12">
 											<label for="nama"><strong>Nama</strong></label>
 											<input type="text" name="nama" placeholder="Masukkan Nama customer" autocomplete="off"  class="form-control" required value="<?= $customer->nama ?>">
 										</div>
 									</div>
 									<div class="form-row">
 
-										<div class="form-group col-md-4">
+										<div class="form-group col-md-12">
 											<label for="telepon"><strong>Telepon</strong></label>
 											<input type="number" name="telepon" placeholder="Masukkan No Telepon" autocomplete="off"  class="form-control" required value="<?= $customer->telepon ?>">
 										</div>

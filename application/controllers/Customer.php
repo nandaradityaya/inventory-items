@@ -11,7 +11,7 @@ class Customer extends CI_Controller{
 	}
 
 	public function index(){
-		$this->data['title'] = 'Data Customer';
+		$this->data['title'] = 'Data Peminjam';
 		$this->data['all_customer'] = $this->m_customer->lihat();
 		$this->data['no'] = 1;
 
@@ -24,7 +24,7 @@ class Customer extends CI_Controller{
 			redirect('dashboard');
 		}
 
-		$this->data['title'] = 'Tambah Customer';
+		$this->data['title'] = 'Tambah Peminjam';
 
 		$this->load->view('customer/tambah', $this->data);
 	}

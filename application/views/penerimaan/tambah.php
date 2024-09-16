@@ -89,7 +89,7 @@
 													</select>
 												</div>
 												<div class="form-group col-2">
-													<label>Kode Barang</label>
+													<label>Serial Number</label>
 													<input type="text" name="kode_barang" value=""  class="form-control">
 												</div>
 												<div class="form-group col-2">
@@ -115,7 +115,7 @@
 											<thead>
 												<tr>
 													<td width="35%">Nama Barang</td>
-													<td width="15%">Kode Barang</td>
+													<td width="15%">Serial Number</td>
 													<td width="15%">Jumlah</td>
 													<td width="10%">Satuan</td>
 													<td width="15%">Keterangan</td>

@@ -19,7 +19,7 @@
 						<h1 class="h3 m-0 text-gray-800"><?= $title ?></h1>
 					</div>
 					<div class="float-right">
-							<a href="<?= base_url('barang_rusak/export') ?>" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a>
+							<!-- <a href="<?= base_url('barang_rusak/export') ?>" target="_blank" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i>&nbsp;&nbsp;Export</a> -->
 							<a href="<?= base_url('barang_rusak/tambah') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Tambah</a>
 					</div>
 				</div>
@@ -50,7 +50,7 @@
                                     <thead>
                                         <tr>
                                             <td>No</td>
-                                            <td>Kode Barang</td>
+                                            <td>Serial Number</td>
                                             <td>Nama Barang</td>
                                             <td>Jumlah Rusak</td>
                                             <td>Keterangan</td>

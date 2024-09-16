@@ -25,21 +25,21 @@
 				</div>
 				<hr>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="card shadow">
 							<div class="card-header"><strong>Isi Form Dibawah Ini!</strong></div>
 							<div class="card-body">
 								<form action="<?= base_url('barang/proses_tambah') ?>" id="form-tambah" method="POST">
 									<div class="form-row">
 										<div class="form-group col-md-6">
-											<label for="kode_barang"><strong>Kode Barang</strong></label>
-											<input type="text" name="kode_barang" placeholder="Masukkan Kode Barang" autocomplete="off"  class="form-control" required value="<?= mt_rand(10000000, 99999999) ?>" maxlength="8" readonly>
+											<label for="kode_barang"><strong>Serial Number</strong></label>
+											<input type="text" name="kode_barang" placeholder="Masukkan Serial Number" autocomplete="off"  class="form-control" required value="<?= mt_rand(10000000, 99999999) ?>" maxlength="8" readonly>
 										</div>
 										<div class="form-group col-md-6">
 											<label for="nama_barang"><strong>Nama Barang</strong></label>
 											<input type="text" name="nama_barang" placeholder="Masukkan Nama Barang" autocomplete="off"  class="form-control" required>
 										</div>
-										<div class="form-group col-md-6">
+										<div class="form-group col-md-12">
                                             <label for="id_kategori"><strong>Kategori</strong></label>
                                             <select name="id_kategori" class="form-control" required>
                                                 <option value="">Pilih Kategori</option>
@@ -66,7 +66,7 @@
 										</div>
 									</div>
 									<div class="form-row">
-										<div class="form-group col-md-6">
+										<div class="form-group col-md-12">
 											<label for="keterangan"><strong>Keterangan</strong></label>
 											<input type="text" name="keterangan" placeholder="Masukkan Keterangan" autocomplete="off"  class="form-control">
 										</div>

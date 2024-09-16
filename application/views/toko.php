@@ -40,7 +40,7 @@
 					</div>
 				<?php endif ?>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="card shadow">
 							<div class="card-header"><strong>Isi Form Dibawah Ini!</strong></div>
 							<div class="card-body">

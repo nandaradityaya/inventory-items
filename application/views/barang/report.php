@@ -17,7 +17,7 @@
 			<thead>
 				<tr>
 					<td>No</td>
-					<td>Kode Barang</td>
+					<td>Serial Number</td>
 					<td>Nama Barang</td>
 					<td>Stok</td>
 					<td>Keterangan</td>

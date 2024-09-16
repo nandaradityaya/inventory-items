@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <form action="<?= base_url('barang_rusak/proses_tambah') ?>" method="post">
                                 <div class="form-group">
-                                    <label for="kode_barang">Kode Barang</label>
+                                    <label for="kode_barang">Serial Number</label>
                                     <select name="kode_barang" id="kode_barang" class="form-control" required>
                                         <option value="">Pilih Barang</option>
                                         <?php foreach($barang as $b): ?>

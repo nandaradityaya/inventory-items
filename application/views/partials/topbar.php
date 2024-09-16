@@ -6,13 +6,13 @@
 					</button>
 					<?php
                 date_default_timezone_set('Asia/Jakarta');
-                echo "<font color='red' face='arial bold'>";
-                echo date('d-M-Y H:i:s');
+                echo "<font color='black' face='arial bold'>";
+                echo date('d M Y H:i');
                 echo " WIB";
                 echo "</font>";
               ?>
           <div class="topbar-divider d-none d-sm-block"></div>
-          <marquee><font size="4" face="Copperplate Gothic Bold">Sistem Informasi Stok Barang Gudang <b><i>Perlengkapan dan Inventarisasi Aset</b></i></font></marquee>
+          
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
 						<!-- Nav Item - Search Dropdown (Visible Only XS) -->

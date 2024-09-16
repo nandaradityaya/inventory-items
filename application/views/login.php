@@ -40,7 +40,7 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                             <div class="text-center mb-4">
-                                <h1 class="h4 text-gray-900">.: Aplikasi SIM Stok Barang :.</h1>
+                                <h1 class="h4 text-gray-900">Barang Inventaris</h1>
                                 <span class="text-muted">Perlengkapan dan Inventarisasi Aset</span>
 			                            </div>
 																		<div class="row">
@@ -70,11 +70,11 @@
 																						<div class="form-group">
 																							<input type="password" class="form-control" id="password" placeholder="Masukkan Password" required name="password">
 																						</div>
-																						<div class="form-group">
+																						<div class="form-group" style="display: none;">
 																							<select name="role" id="role" class="form-control" required>
 																								<option value="">Masuk Sebagai</option>
 																								<option value="petugas">Petugas</option>
-																								<option value="admin">Admin</option>
+																								<option value="admin" selected>Admin</option>
 																							</select>
 																						</div>
 																						<button type="submit" class="btn btn-primary btn-block" name="login">

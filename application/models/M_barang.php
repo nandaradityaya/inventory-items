@@ -9,6 +9,7 @@ class M_barang extends CI_Model{
 
 		$this->db->select('barang.*, kategori.nama_kategori');
         $this->db->join('kategori', 'barang.id_kategori = kategori.id_kategori', 'left');
+		$this->db->order_by('id', 'DESC');
         return $this->db->get($this->_table)->result();
 	}
 

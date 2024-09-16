@@ -35,11 +35,7 @@
 					<span>Laporan</span></a>
 			</li>
 
-			<li class="nav-item <?= $aktif == 'barang_rusak' ? 'active' : '' ?>">
-				<a class="nav-link" href="<?= base_url('barang_rusak') ?>">
-					<i class="fas fa-fw fa-times"></i>
-					<span>Barang Rusak</span></a>
-			</li>
+			
 
 			<li class="nav-item <?= $aktif == 'customer' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('customer') ?>">
@@ -53,11 +49,11 @@
 					<span>Data Sumber Barang</span></a>
 			</li>
 
-			<li class="nav-item <?= $aktif == 'petugas' ? 'active' : '' ?>">
+			<!-- <li class="nav-item <?= $aktif == 'petugas' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('petugas') ?>">
 					<i class="fas fa-fw fa-users"></i>
 					<span>Data User</span></a>
-			</li>
+			</li> -->
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -78,6 +74,12 @@
 					<span>Barang Keluar</span></a>
 			</li>
 
+			<li class="nav-item <?= $aktif == 'barang_rusak' ? 'active' : '' ?>">
+				<a class="nav-link" href="<?= base_url('barang_rusak') ?>">
+					<i class="fas fa-fw fa-times"></i>
+					<span>Barang Rusak</span></a>
+			</li>
+
 			<hr class="sidebar-divider">
 			<?php if ($this->session->login['role'] == 'admin'): ?>
 				<!-- Heading -->
@@ -91,11 +93,11 @@
 						<span>Manajemen Pengguna</span></a>
 				</li>
 
-				<li class="nav-item <?= $aktif == 'toko' ? 'active' : '' ?>">
+				<!-- <li class="nav-item <?= $aktif == 'toko' ? 'active' : '' ?>">
 					<a class="nav-link" href="<?= base_url('toko') ?>">
 						<i class="fas fa-fw fa-building"></i>
 						<span>Profil SIM</span></a>
-				</li>
+				</li> -->
 				
 				<li class="nav-item">
 					<a class="nav-link" href="<?= base_url('logout') ?>">

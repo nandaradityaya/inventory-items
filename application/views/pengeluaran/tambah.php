@@ -56,7 +56,7 @@
 									</div>
 									<div class="row">
 										<div class="col-md-4">
-											<h5>Data Customer</h5>
+											<h5>Data Pengambil</h5>
 											<hr>
 											<div class="form-row">
 												<div class="form-group col-10">
@@ -88,10 +88,10 @@
 														<?php endforeach ?>
 													</select>
 												</div>
-												<div class="form-group col-2">
-													<label>Kode Barang</label>
+												<!-- <div class="form-group col-2">
+													<label>Serial Number</label>
 													<input type="text" name="kode_barang" value="" readonly class="form-control">
-												</div>
+												</div> -->
 												<div class="form-group col-2">
 													<label>Jumlah</label>
 													<input type="number" name="jumlah" value="" class="form-control" min='1'>
@@ -115,9 +115,9 @@
 											<thead>
 												<tr>
 													<td width="35%">Nama Barang</td>
-													<td width="15%">Kode Barang</td>
+													<!-- <td width="15%">Serial Number</td> -->
 													<td width="15%">Jumlah</td>
-													<td width="10%">Satuan</td>
+													<!-- <td width="10%">Satuan</td> -->
 													<td width="15%">Keterangan</td>
 													<td width="15%">Aksi</td>
 												</tr>
