@@ -55,7 +55,7 @@
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-md-4">
+										<!-- <div class="col-md-4">
 											<h5>Data Supplier</h5>
 											<hr>
 											<div class="form-row">
@@ -74,8 +74,8 @@
 												</div>
 												<input type="hidden" name="nama_supplier" value="">
 											</div>
-										</div>
-										<div class="col-md-8">
+										</div> -->
+										<div class="col-md-12">
 											<h5>Data Barang</h5>
 											<hr>
 											<div class="form-row">
@@ -88,15 +88,15 @@
 														<?php endforeach ?>
 													</select>
 												</div>
-												<div class="form-group col-2">
+												<!-- <div class="form-group col-2">
 													<label>Serial Number</label>
 													<input type="text" name="kode_barang" value=""  class="form-control">
-												</div>
-												<div class="form-group col-2">
+												</div> -->
+												<div class="form-group col-3">
 													<label>Jumlah</label>
 													<input type="number" name="jumlah" value="" class="form-control"  min='1'>
 												</div>
-												<div class="form-group col-3">
+												<div class="form-group col-4">
 													<label>Keterangan</label>
 													<input type="text" name="keterangan" value="" class="form-control">
 												</div>
@@ -114,12 +114,12 @@
 										<table class="table table-bordered" id="keranjang">
 											<thead>
 												<tr>
-													<td width="35%">Nama Barang</td>
-													<td width="15%">Serial Number</td>
-													<td width="15%">Jumlah</td>
-													<td width="10%">Satuan</td>
-													<td width="15%">Keterangan</td>
-													<td width="15%">Aksi</td>
+													<td width="30%">Nama Barang</td>
+													<!-- <td width="15%">Serial Number</td> -->
+													<td width="30%">Jumlah</td>
+													<!-- <td width="10%">Satuan</td> -->
+													<td width="30%">Keterangan</td>
+													<td width="30%">Aksi</td>
 												</tr>
 											</thead>
 											<tbody>

@@ -53,8 +53,9 @@
 										<td>No Terima</td>
 										<td>Nama Barang</td>
 										<td>Jumlah</td>
+										<td>Keterangan</td>
 										<td>Nama Petugas</td>
-										<td>Nama Supplier</td>
+										<!-- <td>Nama Supplier</td> -->
 										<td>Tanggal Terima</td>
 										<?php if ($this->session->login['role'] == 'admin'): ?>
 										<td>Aksi</td>
@@ -68,8 +69,9 @@
 											<td><?= $penerimaan->no_terima ?></td>
 											<td><?= $penerimaan->nama_barang ?></td>
 											<td><?= $penerimaan->jumlah ?></td>
+											<td><?= $penerimaan->keterangan ?></td>
 											<td><?= $penerimaan->nama_petugas ?></td>
-											<td><?= $penerimaan->nama_supplier ?></td>
+											<!-- <td><?= $penerimaan->nama_supplier ?></td> -->
 											<td><?= $penerimaan->tgl_terima ?> <?= $penerimaan->jam_terima ?></td>
 											<td>
 												<?php if ($this->session->login['role'] == 'admin'): ?>

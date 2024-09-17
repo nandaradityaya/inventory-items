@@ -37,17 +37,17 @@
 
 			
 
-			<li class="nav-item <?= $aktif == 'customer' ? 'active' : '' ?>">
+			<!-- <li class="nav-item <?= $aktif == 'customer' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('customer') ?>">
 					<i class="fas fa-fw fa-users"></i>
 					<span>Data Pengambil</span></a>
-			</li>
+			</li> -->
 
-			<li class="nav-item <?= $aktif == 'supplier' ? 'active' : '' ?>">
+			<!-- <li class="nav-item <?= $aktif == 'supplier' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('supplier') ?>">
 					<i class="fas fa-fw fa-user"></i>
 					<span>Data Sumber Barang</span></a>
-			</li>
+			</li> -->
 
 			<!-- <li class="nav-item <?= $aktif == 'petugas' ? 'active' : '' ?>">
 				<a class="nav-link" href="<?= base_url('petugas') ?>">

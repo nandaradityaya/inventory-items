@@ -56,11 +56,11 @@
 										<td>:</td>
 										<td><?= $penerimaan->nama_petugas ?></td>
 									</tr>
-									<tr>
+									<!-- <tr>
 										<td><strong>Nama Supplier</strong></td>
 										<td>:</td>
 										<td><?= $penerimaan->nama_supplier ?></td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td><strong>Waktu Penerimaan</strong></td>
 										<td>:</td>
