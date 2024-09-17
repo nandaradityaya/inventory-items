@@ -3,12 +3,24 @@
 class M_barang_rusak extends CI_Model {
     
     public function lihat() {
-        return $this->db->get('barang_rusak')->result();
+        $this->db->select('barang_rusak.*, kategori.nama_kategori');
+        $this->db->from('barang_rusak');
+        $this->db->join('barang', 'barang.kode_barang = barang_rusak.kode_barang');
+        $this->db->join('kategori', 'kategori.id_kategori = barang.id_kategori', 'left');
+        return $this->db->get()->result();
     }
 
     public function lihat_by_date($tanggal) {
-        $this->db->where('DATE(tanggal)', $tanggal);
-        return $this->db->get('barang_rusak')->result();
+        $this->db->select('barang_rusak.*, kategori.nama_kategori');
+        $this->db->from('barang_rusak');
+        $this->db->join('barang', 'barang.kode_barang = barang_rusak.kode_barang');
+        $this->db->join('kategori', 'kategori.id_kategori = barang.id_kategori', 'left');
+        $dateTime = DateTime::createFromFormat('d/m/Y', $tanggal);
+        $tanggal_db = $dateTime ? $dateTime->format('Y-m-d') : null;
+        if ($tanggal_db) {
+            $this->db->where('DATE(barang_rusak.tanggal)', $tanggal_db);
+        }
+        return $this->db->get()->result();
     }
     
     public function tambah($data) {

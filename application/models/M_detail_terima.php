@@ -16,21 +16,24 @@ class M_detail_terima extends CI_Model {
 	}
 
 	public function lihat_by_date($tanggal) {
-		$this->db->select('nama_barang, SUM(jumlah) as jumlah');
-		$this->db->from('detail_terima');
-		$this->db->join('penerimaan', 'detail_terima.no_terima = penerimaan.no_terima');
-		$this->db->where('penerimaan.tgl_terima', $tanggal);
-		$this->db->group_by('nama_barang');
-		$query = $this->db->get();
-		return $query->result_array();
-	}
-	
+        $this->db->select('detail_terima.nama_barang, SUM(detail_terima.jumlah) as jumlah, kategori.nama_kategori');
+        $this->db->from('detail_terima');
+        $this->db->join('penerimaan', 'penerimaan.no_terima = detail_terima.no_terima');
+        $this->db->join('barang', 'barang.nama_barang = detail_terima.nama_barang');
+        $this->db->join('kategori', 'kategori.id_kategori = barang.id_kategori', 'left');
+        $this->db->where('penerimaan.tgl_terima', $tanggal);
+        $this->db->group_by('detail_terima.nama_barang');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     public function lihat_all() {
-        $this->db->select('nama_barang, SUM(jumlah) as jumlah');
+        $this->db->select('detail_terima.nama_barang, SUM(detail_terima.jumlah) as jumlah, kategori.nama_kategori');
         $this->db->from('detail_terima');
-        $this->db->join('penerimaan', 'detail_terima.no_terima = penerimaan.no_terima');
-        $this->db->group_by('nama_barang');
+        $this->db->join('penerimaan', 'penerimaan.no_terima = detail_terima.no_terima');
+        $this->db->join('barang', 'barang.nama_barang = detail_terima.nama_barang');
+        $this->db->join('kategori', 'kategori.id_kategori = barang.id_kategori', 'left');
+        $this->db->group_by('detail_terima.nama_barang');
         $query = $this->db->get();
         return $query->result_array();
     }

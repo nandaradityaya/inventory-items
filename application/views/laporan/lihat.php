@@ -66,7 +66,8 @@
                                             <tr>
                                                 <td><?= $no++ ?></td>
                                                 <td><?= $nama_barang ?></td>
-												<td><?= isset($data['kategori']) ? $data['kategori'] : '-' ?></td>
+												<!-- <td><?= isset($data['kategori']) ? $data['kategori'] : '-' ?></td> -->
+												<td><?= htmlspecialchars($data['kategori']) ?></td>
                                                 <td><?= isset($data['masuk']) ? $data['masuk'] : 0 ?></td>
                                                 <td><?= isset($data['keluar']) ? $data['keluar'] : 0 ?></td>
 												<td><?= isset($data['rusak']) ? $data['rusak'] : 0 ?></td>

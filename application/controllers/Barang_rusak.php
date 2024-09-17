@@ -4,7 +4,7 @@ class Barang_rusak extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        if($this->session->login['role'] != 'admin') redirect();
+        if ($this->session->login['role'] != 'admin') redirect();
         $this->load->model('M_barang', 'm_barang');
         $this->load->model('M_barang_rusak', 'm_barang_rusak');
     }
@@ -28,31 +28,36 @@ class Barang_rusak extends CI_Controller {
         $nama_barang = $this->input->post('nama_barang');
         $jumlah_rusak = $this->input->post('jumlah_rusak');
         $keterangan = $this->input->post('keterangan');
-        // $tanggal = date('Y-m-d');
 
-         // Ambil data barang berdasarkan kode
-    $barang = $this->m_barang->lihat_kode($kode_barang);  // Metode lihat_kode harus ada di model
+        // Ambil data barang berdasarkan kode
+        $barang = $this->m_barang->lihat_kode($kode_barang);  // Metode lihat_kode harus ada di model
 
-    if ($barang) {
-        // Kurangi stok barang
-        $new_stok = $barang->stok - $jumlah_rusak;
+        if ($barang) {
+            // Kurangi stok barang
+            $new_stok = $barang->stok - $jumlah_rusak;
 
-        if ($new_stok >= 0) {
-            $this->m_barang->update_stok($kode_barang, $new_stok);
-            $this->m_barang_rusak->tambah([
-                'kode_barang' => $kode_barang,
-                'nama_barang' => $nama_barang,
-                'jumlah_rusak' => $jumlah_rusak,
-                'keterangan' => $keterangan,
-                'tanggal' => date('Y-m-d H:i:s'),
-            ]);
-            $this->session->set_flashdata('success', 'Barang rusak berhasil ditambahkan!');
+            if ($new_stok >= 0) {
+                $this->m_barang->update_stok($kode_barang, $new_stok);
+
+                // Konversi tanggal ke format 'Y-m-d'
+                $tanggal_input = date('d/m/Y');
+                $dateTime = DateTime::createFromFormat('d/m/Y', $tanggal_input);
+                $tanggal = $dateTime->format('Y-m-d');
+
+                $this->m_barang_rusak->tambah([
+                    'kode_barang' => $kode_barang,
+                    'nama_barang' => $nama_barang,
+                    'jumlah_rusak' => $jumlah_rusak,
+                    'keterangan' => $keterangan,
+                    'tanggal' => $tanggal,
+                ]);
+                $this->session->set_flashdata('success', 'Barang rusak berhasil ditambahkan!');
+            } else {
+                $this->session->set_flashdata('error', 'Stok barang tidak cukup!');
+            }
         } else {
-            $this->session->set_flashdata('error', 'Stok barang tidak cukup!');
+            $this->session->set_flashdata('error', 'Barang tidak ditemukan!');
         }
-    } else {
-        $this->session->set_flashdata('error', 'Barang tidak ditemukan!');
-    }
         redirect('barang_rusak');
     }
 }

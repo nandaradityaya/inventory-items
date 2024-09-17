@@ -20,7 +20,7 @@ class Laporan extends CI_Controller {
         // Konversi tanggal dari 'd/m/Y' ke 'Y-m-d'
         $dateTime = DateTime::createFromFormat('d/m/Y', $tanggal_input);
         if ($dateTime !== false) {
-            $tanggal = $dateTime->format('Y-m-d');  // Format tanggal untuk database
+            $tanggal = $dateTime->format('d/m/Y');  // Format tanggal untuk database
         } else {
             $tanggal = null;
         }
@@ -38,37 +38,48 @@ class Laporan extends CI_Controller {
 
         // Gabungkan data, termasuk kategori
         $laporan = [];
+
+        // Proses penerimaan
         foreach ($penerimaan as $item) {
-            $laporan[$item['nama_barang']] = [
-                'masuk' => $item['jumlah'], 
-                'kategori' => isset($item['nama_kategori']) ? $item['nama_kategori'] : 'Kategori Tidak Ada'
-            ];
+            $nama_barang = $item['nama_barang'];
+            if (!isset($laporan[$nama_barang])) {
+                $laporan[$nama_barang] = [
+                    'masuk' => 0,
+                    'keluar' => 0,
+                    'rusak' => 0,
+                    'kategori' => $item['nama_kategori'] ?? 'Kategori Tidak Ada',
+                ];
+            }
+            $laporan[$nama_barang]['masuk'] += $item['jumlah'];
         }
-        
+
+        // Proses pengeluaran
         foreach ($pengeluaran as $item) {
-            if (!isset($laporan[$item['nama_barang']])) {
-                $laporan[$item['nama_barang']] = [
-                    'masuk' => 0, 
-                    'keluar' => 0, 
-                    'rusak' => 0, 
-                    'kategori' => isset($item['nama_kategori']) ? $item['nama_kategori'] : 'Kategori Tidak Ada'
+            $nama_barang = $item['nama_barang'];
+            if (!isset($laporan[$nama_barang])) {
+                $laporan[$nama_barang] = [
+                    'masuk' => 0,
+                    'keluar' => 0,
+                    'rusak' => 0,
+                    'kategori' => $item['nama_kategori'] ?? 'Kategori Tidak Ada',
                 ];
             }
-            $laporan[$item['nama_barang']]['keluar'] = $item['jumlah'];
+            $laporan[$nama_barang]['keluar'] += $item['jumlah'];
         }
-        
+
+        // Proses barang rusak
         foreach ($barang_rusak as $item) {
-            if (!isset($laporan[$item->nama_barang])) {
-                $laporan[$item->nama_barang] = [
-                    'masuk' => 0, 
-                    'keluar' => 0, 
-                    'rusak' => 0, 
-                    'kategori' => isset($item->nama_kategori) ? $item->nama_kategori : 'Kategori Tidak Ada'
+            $nama_barang = $item->nama_barang;
+            if (!isset($laporan[$nama_barang])) {
+                $laporan[$nama_barang] = [
+                    'masuk' => 0,
+                    'keluar' => 0,
+                    'rusak' => 0,
+                    'kategori' => $item->nama_kategori ?? 'Kategori Tidak Ada',
                 ];
             }
-            $laporan[$item->nama_barang]['rusak'] = $item->jumlah_rusak;
+            $laporan[$nama_barang]['rusak'] += $item->jumlah_rusak;
         }
-        
 
         // Kirim data ke view
         $this->data['no'] = 1;
