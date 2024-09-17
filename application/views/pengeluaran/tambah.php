@@ -55,7 +55,7 @@
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-md-4">
+										<!-- <div class="col-md-4">
 											<h5>Data Pengambil</h5>
 											<hr>
 											<div class="form-row">
@@ -74,12 +74,12 @@
 												</div>
 												<input type="hidden" name="nama_customer" value="">
 											</div>
-										</div>
-										<div class="col-md-8">
+										</div> -->
+										<div class="col-md-12">
 											<h5>Data Barang</h5>
 											<hr>
 											<div class="form-row">
-												<div class="form-group col-4">
+												<div class="form-group col-5">
 													<label for="nama_barang">Nama Barang</label>
 													<select name="nama_barang" id="nama_barang" class="form-control">
 														<option value="">Pilih Barang</option>
@@ -92,7 +92,7 @@
 													<label>Serial Number</label>
 													<input type="text" name="kode_barang" value="" readonly class="form-control">
 												</div> -->
-												<div class="form-group col-2">
+												<div class="form-group col-3">
 													<label>Jumlah</label>
 													<input type="number" name="jumlah" value="" class="form-control" min='1'>
 												</div>

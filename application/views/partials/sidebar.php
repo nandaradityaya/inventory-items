@@ -79,6 +79,7 @@
 					<i class="fas fa-fw fa-times"></i>
 					<span>Barang Rusak</span></a>
 			</li>
+			
 
 			<hr class="sidebar-divider">
 			<?php if ($this->session->login['role'] == 'admin'): ?>

@@ -21,7 +21,7 @@
 					<td>Nama Barang</td>
 					<td>Jumlah</td>
 					<td>Nama Petugas</td>
-					<td>Nama Pengambil</td>
+					<!-- <td>Nama Pengambil</td> -->
 					<td>Tanggal Keluar</td>
 					<td>Keterangan</td>
 				</tr>
@@ -33,7 +33,7 @@
 						<td><?= $pengeluaran->nama_barang ?></td>
 						<td><?= $pengeluaran->jumlah ?></td>
 						<td><?= $pengeluaran->nama_petugas ?></td>
-						<td><?= $pengeluaran->nama_customer ?></td>
+						<!-- <td><?= $pengeluaran->nama_customer ?></td> -->
 						<td><?= $pengeluaran->tgl_keluar ?> Pukul <?= $pengeluaran->jam_keluar ?></td>
 						<td><?= $pengeluaran->keterangan ?></td>
 					</tr>
