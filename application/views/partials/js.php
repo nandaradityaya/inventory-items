@@ -15,3 +15,14 @@ $(function() {
     });
 });
 </script>
+<script>
+    window.setTimeout(function() {
+        var alert = document.querySelector(".alert");
+        if (alert) {
+            alert.classList.add('fade');
+            setTimeout(function() {
+                alert.style.display = 'none';
+            }, 500); // Tambahkan sedikit delay agar fade out sempurna
+        }
+    }, 1000); // Waktu dalam milidetik (2000ms = 2 detik)
+</script>
