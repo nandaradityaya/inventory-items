@@ -55,6 +55,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Barang</th>
+											<th>Stok</th>
 											<th>Kategori</th>
                                             <th>Jumlah Masuk</th>
                                             <th>Jumlah Keluar</th>
@@ -66,7 +67,16 @@
                                             <tr>
                                                 <td><?= $no++ ?></td>
                                                 <td><?= $nama_barang ?></td>
-												<!-- <td><?= isset($data['kategori']) ? $data['kategori'] : '-' ?></td> -->
+                                                <!-- <td><?php echo number_format($data['stok']); ?></td> -->
+
+												<td>
+													<?php if ($data['stok'] < 10): ?>
+														<span class="badge badge-danger"><?php echo number_format($data['stok']); ?></span>
+													<?php else: ?>
+														<span class="badge badge-success"><?php echo number_format($data['stok']); ?></span>
+													<?php endif; ?>
+												</td>
+
 												<td><?= htmlspecialchars($data['kategori']) ?></td>
                                                 <td><?= isset($data['masuk']) ? $data['masuk'] : 0 ?></td>
                                                 <td><?= isset($data['keluar']) ? $data['keluar'] : 0 ?></td>
