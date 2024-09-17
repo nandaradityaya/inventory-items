@@ -41,6 +41,7 @@ class Laporan extends CI_Controller {
         $stok_barang = [];
         foreach ($all_barang as $barang) {
             $stok_barang[$barang->nama_barang] = $barang->stok;
+            $satuan[$barang->nama_barang] = $barang->satuan;
         }
 
         // Gabungkan data, termasuk kategori
@@ -55,6 +56,7 @@ class Laporan extends CI_Controller {
                     'keluar' => 0,
                     'rusak' => 0,
                     'stok' => $stok_barang[$nama_barang] ?? 0,
+                    'satuan' => $satuan[$nama_barang] ?? 'Satuan Tidak Ada',
                     'kategori' => $item['nama_kategori'] ?? 'Kategori Tidak Ada',
                 ];
             }
@@ -70,6 +72,7 @@ class Laporan extends CI_Controller {
                     'keluar' => 0,
                     'rusak' => 0,
                     'stok' => $stok_barang[$nama_barang] ?? 0,
+                    'satuan' => $satuan[$nama_barang] ?? 'Satuan Tidak Ada',
                     'kategori' => $item['nama_kategori'] ?? 'Kategori Tidak Ada',
                 ];
             }
@@ -85,6 +88,7 @@ class Laporan extends CI_Controller {
                     'keluar' => 0,
                     'rusak' => 0,
                     'stok' => $stok_barang[$nama_barang] ?? 0,
+                    'satuan' => $satuan[$nama_barang] ?? 'Satuan Tidak Ada',
                     'kategori' => $item->nama_kategori ?? 'Kategori Tidak Ada',
                 ];
             }
