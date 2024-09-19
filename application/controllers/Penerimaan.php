@@ -14,7 +14,7 @@ class Penerimaan extends CI_Controller{
 	}
 
 	public function index(){
-		$this->data['title'] = 'Transaksi Penerimaan';
+		$this->data['title'] = 'Data Barang Masuk';
 		$this->data['all_penerimaan'] = $this->m_penerimaan->lihat();
 		$this->data['no'] = 1;
 
@@ -22,7 +22,7 @@ class Penerimaan extends CI_Controller{
 	}
 
 	public function tambah(){
-		$this->data['title'] = 'Tambah Transaksi';
+		$this->data['title'] = 'Barang Keluar';
 		$this->data['all_barang'] = $this->m_barang->lihat_stok();
 		$this->data['all_supplier'] = $this->m_supplier->lihat_spl();
 
@@ -60,7 +60,7 @@ class Penerimaan extends CI_Controller{
 	}
 
 	public function detail($no_terima){
-		$this->data['title'] = 'Detail Penerimaan';
+		$this->data['title'] = 'Detail Barang Masuk';
 		$this->data['penerimaan'] = $this->m_penerimaan->lihat_no_terima($no_terima);
 		$this->data['all_detail_terima'] = $this->m_detail_terima->lihat_no_terima($no_terima);
 		$this->data['no'] = 1;

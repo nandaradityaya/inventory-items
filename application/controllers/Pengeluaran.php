@@ -14,7 +14,7 @@ class Pengeluaran extends CI_Controller{
 	}
 
 	public function index(){
-		$this->data['title'] = 'Transaksi Pengeluaran';
+		$this->data['title'] = 'Data Barang Keluar';
 		$this->data['all_pengeluaran'] = $this->m_pengeluaran->lihat();
 		$this->data['no'] = 1;
 
@@ -22,7 +22,7 @@ class Pengeluaran extends CI_Controller{
 	}
 
 	public function tambah(){
-		$this->data['title'] = 'Tambah Transaksi';
+		$this->data['title'] = 'Barang Keluar';
 		$this->data['all_barang'] = $this->m_barang->lihat_stok();
 		$this->data['all_customer'] = $this->m_customer->lihat_cst();
 
@@ -60,7 +60,7 @@ class Pengeluaran extends CI_Controller{
 	}
 
 	public function detail($no_keluar){
-		$this->data['title'] = 'Detail Pengeluaran';
+		$this->data['title'] = 'Detail Barang Keluar';
 		$this->data['pengeluaran'] = $this->m_pengeluaran->lihat_no_keluar($no_keluar);
 		$this->data['all_detail_keluar'] = $this->m_detail_keluar->lihat_no_keluar($no_keluar);
 		$this->data['no'] = 1;
