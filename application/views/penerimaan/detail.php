@@ -46,11 +46,11 @@
 						<div class="row">
 							<div class="col-md-6">
 								<table class="table table-borderless">
-									<tr>
+									<!-- <tr>
 										<td><strong>No Penerimaan</strong></td>
 										<td>:</td>
 										<td><?= $penerimaan->no_terima ?></td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td><strong>Nama Petugas</strong></td>
 										<td>:</td>

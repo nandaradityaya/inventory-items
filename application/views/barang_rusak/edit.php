@@ -29,31 +29,28 @@
 						<div class="card shadow">
 							<div class="card-header"><strong>Isi Form Dibawah Ini!</strong></div>
 							<div class="card-body">
-								<form action="<?= base_url('barang_rusak/proses_edit/' . $barang_rusak->id) ?>" method="POST">
-									<div class="form-group">
-										<label for="kode_barang">Kode Barang</label>
-										<select name="kode_barang" id="kode_barang" class="form-control" required>
-											<?php foreach($barang as $brg): ?>
-												<option value="<?= $brg->kode_barang ?>" <?= ($brg->kode_barang == $barang_rusak->kode_barang) ? 'selected' : '' ?>>
-													<?= $brg->kode_barang ?> - <?= $brg->nama_barang ?>
-												</option>
-											<?php endforeach; ?>
-										</select>
-									</div>
-									<div class="form-group">
-										<label for="nama_barang">Nama Barang</label>
-										<input type="text" name="nama_barang" id="nama_barang" class="form-control" value="<?= $barang_rusak->nama_barang ?>" readonly>
-									</div>
-									<div class="form-group">
-										<label for="jumlah_rusak">Jumlah Rusak</label>
-										<input type="number" name="jumlah_rusak" id="jumlah_rusak" class="form-control" value="<?= $barang_rusak->jumlah_rusak ?>" required>
-									</div>
-									<div class="form-group">
-										<label for="keterangan">Keterangan</label>
-										<textarea name="keterangan" id="keterangan" class="form-control" required><?= $barang_rusak->keterangan ?></textarea>
-									</div>
-									<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
-								</form>
+							<form action="<?= base_url('barang_rusak/proses_edit/' . $barang_rusak->id) ?>" method="POST">
+    <div class="form-group">
+        <label for="id_barang">Pilih Barang</label>
+        <select name="id_barang" id="id_barang" class="form-control" required>
+            <?php foreach($barang as $brg): ?>
+                <option value="<?= $brg->id ?>" <?= ($brg->id == $barang_rusak->id_barang) ? 'selected' : '' ?>>
+                    <?= $brg->kode_barang ?> - <?= $brg->nama_barang ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="jumlah_rusak">Jumlah Rusak</label>
+        <input type="number" name="jumlah_rusak" id="jumlah_rusak" class="form-control" value="<?= $barang_rusak->jumlah_rusak ?>" required>
+    </div>
+    <div class="form-group">
+        <label for="keterangan">Keterangan</label>
+        <textarea name="keterangan" id="keterangan" class="form-control" required><?= $barang_rusak->keterangan ?></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+</form>
+
 
 							</div>				
 						</div>

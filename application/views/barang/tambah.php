@@ -33,7 +33,7 @@
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label for="kode_barang"><strong>Serial Number</strong></label>
-											<input type="text" name="kode_barang" placeholder="Masukkan Serial Number" autocomplete="off"  class="form-control" required value="<?= mt_rand(10000000, 99999999) ?>" maxlength="8" readonly>
+											<input type="text" name="kode_barang" placeholder="Masukkan Serial Number" autocomplete="off"  class="form-control" required maxlength="8">
 										</div>
 										<div class="form-group col-md-6">
 											<label for="nama_barang"><strong>Nama Barang</strong></label>

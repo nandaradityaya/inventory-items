@@ -50,7 +50,7 @@
 								<thead>
 									<tr>
 										<td>No</td>
-										<td>No Terima</td>
+										<!-- <td>No Terima</td> -->
 										<td>Nama Barang</td>
 										<td>Jumlah</td>
 										<td>Keterangan</td>
@@ -66,7 +66,7 @@
 									<?php foreach ($all_penerimaan as $penerimaan): ?>
 										<tr>
 											<td><?= $no++ ?></td>
-											<td><?= $penerimaan->no_terima ?></td>
+											<!-- <td><?= $penerimaan->no_terima ?></td> -->
 											<td><?= $penerimaan->nama_barang ?></td>
 											<td><?= $penerimaan->jumlah ?></td>
 											<td><?= $penerimaan->keterangan ?></td>

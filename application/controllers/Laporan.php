@@ -1,5 +1,4 @@
 <?php
-use Dompdf\Dompdf;
 class Laporan extends CI_Controller {
     public function __construct() {
         parent::__construct();
@@ -14,27 +13,25 @@ class Laporan extends CI_Controller {
     }
 
     public function index() {
-        // Ambil tanggal dari input
-        $tanggal_input = $this->input->post('tanggal') ?? '';
+   // Ambil tanggal dari input
+   $tanggal_awal_input = $this->input->post('tanggal_awal') ?? '';
+   $tanggal_akhir_input = $this->input->post('tanggal_akhir') ?? '';
 
-        // Konversi tanggal dari 'd/m/Y' ke 'Y-m-d'
-        $dateTime = DateTime::createFromFormat('d/m/Y', $tanggal_input);
-        if ($dateTime !== false) {
-            $tanggal = $dateTime->format('d/m/Y');  // Format tanggal untuk database
-        } else {
-            $tanggal = null;
-        }
+   // Konversi tanggal dari 'd/m/Y' ke 'Y-m-d'
+   $tanggal_awal = DateTime::createFromFormat('d/m/Y', $tanggal_awal_input) ? DateTime::createFromFormat('d/m/Y', $tanggal_awal_input)->format('d/m/Y') : null;
+   $tanggal_akhir = DateTime::createFromFormat('d/m/Y', $tanggal_akhir_input) ? DateTime::createFromFormat('d/m/Y', $tanggal_akhir_input)->format('d/m/Y') : null;
 
-        // Ambil data penerimaan, pengeluaran, dan barang rusak
-        if ($tanggal) {
-            $penerimaan = $this->m_detail_terima->lihat_by_date($tanggal);
-            $pengeluaran = $this->m_detail_keluar->lihat_by_date($tanggal);
-            $barang_rusak = $this->m_barang_rusak->lihat_by_date($tanggal);
-        } else {
-            $penerimaan = $this->m_detail_terima->lihat_all();
-            $pengeluaran = $this->m_detail_keluar->lihat_all();
-            $barang_rusak = $this->m_barang_rusak->lihat();
-        }
+   // Ambil data penerimaan, pengeluaran, dan barang rusak
+   if ($tanggal_awal && $tanggal_akhir) {
+       $penerimaan = $this->m_detail_terima->lihat_by_date_range($tanggal_awal, $tanggal_akhir);
+       $pengeluaran = $this->m_detail_keluar->lihat_by_date_range($tanggal_awal, $tanggal_akhir);
+       $barang_rusak = $this->m_barang_rusak->lihat_by_date_range($tanggal_awal, $tanggal_akhir);
+   } else {
+       // Jika tidak ada input tanggal, ambil semua data
+       $penerimaan = $this->m_detail_terima->lihat_all();
+       $pengeluaran = $this->m_detail_keluar->lihat_all();
+       $barang_rusak = $this->m_barang_rusak->lihat();
+   }
 
         // Ambil stok barang
         $all_barang = $this->m_barang->lihat();  // Mengambil semua data barang
@@ -95,112 +92,33 @@ class Laporan extends CI_Controller {
             $laporan[$nama_barang]['rusak'] += $item->jumlah_rusak;
         }
 
+        // Proses barang rusak
+        // foreach ($barang_rusak as $item) {
+        //     $nama_barang = $item['nama_barang']; // Ganti dengan sintaksis array
+        //     if (!isset($laporan[$nama_barang])) {
+        //         $laporan[$nama_barang] = [
+        //             'masuk' => 0,
+        //             'keluar' => 0,
+        //             'rusak' => 0,
+        //             'stok' => $stok_barang[$nama_barang] ?? 0,
+        //             'satuan' => $satuan[$nama_barang] ?? 'Satuan Tidak Ada',
+        //             'kategori' => $item['nama_kategori'] ?? 'Kategori Tidak Ada', // Ganti dengan sintaksis array
+        //         ];
+        //     }
+        //     $laporan[$nama_barang]['rusak'] += $item['jumlah_rusak']; // Ganti dengan sintaksis array
+        // }
+
+
         // Kirim data ke view
         $this->data['no'] = 1;
+        // $this->data['laporan'] = $laporan;
+        // $this->data['tanggal'] = $tanggal_input;
+        $this->data['tanggal_awal'] = $tanggal_awal_input;
+        $this->data['tanggal_akhir'] = $tanggal_akhir_input;
         $this->data['laporan'] = $laporan;
-        $this->data['tanggal'] = $tanggal_input;
+        // $this->load->view('laporan/lihat', $this->data);
         $this->data['title'] = 'Laporan Barang';
         $this->load->view('laporan/lihat', $this->data);
     }
 
-    public function export() {
-        $dompdf = new Dompdf();
-        
-        // Ambil tanggal dari input
-        $tanggal_input = $this->input->post('tanggal') ?? '';
-
-        // Konversi tanggal dari 'd/m/Y' ke 'Y-m-d'
-        $dateTime = DateTime::createFromFormat('d/m/Y', $tanggal_input);
-        if ($dateTime !== false) {
-            $tanggal = $dateTime->format('d/m/Y');  // Format tanggal
-        } else {
-            $tanggal = null;
-        }
-
-        // Ambil data penerimaan, pengeluaran, dan barang rusak berdasarkan tanggal
-        if ($tanggal) {
-            $penerimaan = $this->m_detail_terima->lihat_by_date($tanggal);
-            $pengeluaran = $this->m_detail_keluar->lihat_by_date($tanggal);
-            $barang_rusak = $this->m_barang_rusak->lihat_by_date($tanggal);
-        } else {
-            $penerimaan = $this->m_detail_terima->lihat_all();
-            $pengeluaran = $this->m_detail_keluar->lihat_all();
-            $barang_rusak = $this->m_barang_rusak->lihat();
-        }
-
-        // Ambil stok barang
-        $all_barang = $this->m_barang->lihat();
-        $stok_barang = [];
-        foreach ($all_barang as $barang) {
-            $stok_barang[$barang->nama_barang] = $barang->stok;
-            $satuan[$barang->nama_barang] = $barang->satuan;
-        }
-
-        // Gabungkan data, termasuk kategori
-        $laporan = [];
-
-        // Proses penerimaan
-        foreach ($penerimaan as $item) {
-            $nama_barang = $item['nama_barang'];
-            if (!isset($laporan[$nama_barang])) {
-                $laporan[$nama_barang] = [
-                    'masuk' => 0,
-                    'keluar' => 0,
-                    'rusak' => 0,
-                    'stok' => $stok_barang[$nama_barang] ?? 0,
-                    'satuan' => $satuan[$nama_barang] ?? 'Satuan Tidak Ada',
-                    'kategori' => $item['nama_kategori'] ?? 'Kategori Tidak Ada',
-                ];
-            }
-            $laporan[$nama_barang]['masuk'] += $item['jumlah'];
-        }
-
-        // Proses pengeluaran
-        foreach ($pengeluaran as $item) {
-            $nama_barang = $item['nama_barang'];
-            if (!isset($laporan[$nama_barang])) {
-                $laporan[$nama_barang] = [
-                    'masuk' => 0,
-                    'keluar' => 0,
-                    'rusak' => 0,
-                    'stok' => $stok_barang[$nama_barang] ?? 0,
-                    'satuan' => $satuan[$nama_barang] ?? 'Satuan Tidak Ada',
-                    'kategori' => $item['nama_kategori'] ?? 'Kategori Tidak Ada',
-                ];
-            }
-            $laporan[$nama_barang]['keluar'] += $item['jumlah'];
-        }
-
-        // Proses barang rusak
-        foreach ($barang_rusak as $item) {
-            $nama_barang = $item->nama_barang;
-            if (!isset($laporan[$nama_barang])) {
-                $laporan[$nama_barang] = [
-                    'masuk' => 0,
-                    'keluar' => 0,
-                    'rusak' => 0,
-                    'stok' => $stok_barang[$nama_barang] ?? 0,
-                    'satuan' => $satuan[$nama_barang] ?? 'Satuan Tidak Ada',
-                    'kategori' => $item->nama_kategori ?? 'Kategori Tidak Ada',
-                ];
-            }
-            $laporan[$nama_barang]['rusak'] += $item->jumlah_rusak;
-        }
-
-        // Set data untuk di-export ke PDF
-        $this->data['laporan'] = $laporan;
-        $this->data['title'] = 'Laporan Barang Tanggal ' . ($tanggal_input ? $tanggal_input : 'Semua');
-        $this->data['no'] = 1;
-
-        // Buat halaman HTML dari view
-        $html = $this->load->view('laporan/report', $this->data, true);
-
-        // Atur orientasi dan ukuran kertas PDF
-        $dompdf->setPaper('A4', 'Landscape');
-        $dompdf->load_html($html);
-        $dompdf->render();
-
-        // Ekspor PDF
-        $dompdf->stream('Laporan Barang Tanggal ' . ($tanggal_input ? $tanggal_input : 'Semua') . ' - ' . date('d F Y'), array("Attachment" => false));
-    }
 }

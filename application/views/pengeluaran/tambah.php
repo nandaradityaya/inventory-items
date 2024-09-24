@@ -33,23 +33,23 @@
 									<h5>Data Petugas</h5>
 									<hr>
 									<div class="form-row">
-										<div class="form-group col-2">
+										<div class="form-group col-2" style="display: none;">
 											<label>No. Terima</label>
 											<input type="text" name="no_keluar" value="TR<?= time() ?>" readonly class="form-control">
 										</div>
-										<div class="form-group col-3">
+										<div class="form-group col-12 col-lg-3">
 											<label>Kode Petugas</label>
 											<input type="text" name="kode_petugas" value="<?= $this->session->login['kode'] ?>" readonly class="form-control">
 										</div>
-										<div class="form-group col-3">
+										<div class="form-group col-12 col-lg-3">
 											<label>Nama Petugas</label>
 											<input type="text" name="nama_petugas" value="<?= $this->session->login['nama'] ?>" readonly class="form-control">
 										</div>
-										<div class="form-group col-2">
+										<div class="form-group col-12 col-lg-3">
 											<label>Tanggal Keluar</label>
 											<input type="text" name="tgl_keluar" value="<?= date('d/m/Y') ?>" readonly class="form-control">
 										</div>
-										<div class="form-group col-2">
+										<div class="form-group col-12 col-lg-3">
 											<label>Jam</label>
 											<input type="text" name="jam_keluar" value="<?= date('H:i:s') ?>" readonly class="form-control">
 										</div>

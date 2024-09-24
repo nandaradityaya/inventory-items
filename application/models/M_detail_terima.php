@@ -27,6 +27,23 @@ class M_detail_terima extends CI_Model {
         return $query->result_array();
     }
 
+    public function lihat_by_date_range($tanggal_awal, $tanggal_akhir) {
+        $this->db->select('detail_terima.nama_barang, SUM(detail_terima.jumlah) as jumlah, kategori.nama_kategori');
+        $this->db->from('detail_terima');
+        $this->db->join('penerimaan', 'penerimaan.no_terima = detail_terima.no_terima');
+        $this->db->join('barang', 'barang.nama_barang = detail_terima.nama_barang');
+        $this->db->join('kategori', 'kategori.id_kategori = barang.id_kategori', 'left');
+        
+        // Menggunakan BETWEEN untuk rentang tanggal
+        $this->db->where('penerimaan.tgl_terima >=', $tanggal_awal);
+        $this->db->where('penerimaan.tgl_terima <=', $tanggal_akhir);
+        
+        $this->db->group_by('detail_terima.nama_barang');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+
     public function lihat_all() {
         $this->db->select('detail_terima.nama_barang, SUM(detail_terima.jumlah) as jumlah, kategori.nama_kategori');
         $this->db->from('detail_terima');

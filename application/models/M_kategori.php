@@ -20,7 +20,15 @@ class M_kategori extends CI_Model {
         return $this->db->update($this->_table, $data);
     }
 
+    // public function hapus($id_kategori) {
+    //     return $this->db->delete($this->_table, ['id_kategori' => $id_kategori]);
+    // }
     public function hapus($id_kategori) {
+        // Hapus terlebih dahulu produk yang berelasi dengan kategori
+        $this->db->delete('barang', ['id_kategori' => $id_kategori]);
+        
+        // Setelah itu, hapus kategori
         return $this->db->delete($this->_table, ['id_kategori' => $id_kategori]);
     }
+    
 }
