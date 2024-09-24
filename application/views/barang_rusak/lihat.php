@@ -55,6 +55,7 @@
                                             <td>Jumlah Rusak</td>
                                             <td>Keterangan</td>
                                             <td>Tanggal</td>
+                                            <td>Aksi</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -67,6 +68,10 @@
                                                     <td><?= $rusak->jumlah_rusak ?></td>
                                                     <td><?= $rusak->keterangan ?></td>
                                                     <td><?= $rusak->tanggal ?></td>
+                                                    <td>
+                                                        <!-- <a href="<?= base_url('barang_rusak/edit/' . $rusak->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></i>&nbsp;&nbsp;Edit</a> -->
+                                                        <a href="<?= base_url('barang_rusak/delete/' . $rusak->id) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin?')"><i class="fa fa-trash"></i>&nbsp;&nbsp;Hapus</a>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach ?>
                                         <?php else: ?>

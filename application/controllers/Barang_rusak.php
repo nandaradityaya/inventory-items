@@ -60,4 +60,68 @@ class Barang_rusak extends CI_Controller {
         }
         redirect('barang_rusak');
     }
+
+    public function edit($id) {
+        $data['title'] = 'Edit Barang Rusak';
+        $data['barang_rusak'] = $this->m_barang_rusak->lihat_by_id($id); // Ambil data barang rusak berdasarkan ID
+        $data['barang'] = $this->m_barang->lihat(); // Ambil semua barang untuk pilihan
+        $data['aktif'] = 'barang_rusak';
+        $this->load->view('barang_rusak/edit', $data);
+    }
+    
+    public function proses_edit($id) {
+        $kode_barang = $this->input->post('kode_barang');
+        $nama_barang = $this->input->post('nama_barang');
+        $jumlah_rusak_baru = $this->input->post('jumlah_rusak');
+        $keterangan = $this->input->post('keterangan');
+    
+        // Ambil data barang rusak yang akan di-edit
+        $barang_rusak_lama = $this->m_barang_rusak->lihat_by_id($id);
+        
+        if ($barang_rusak_lama) {
+            // Ambil data barang berdasarkan kode
+            $barang = $this->m_barang->lihat_kode($kode_barang);
+    
+            if ($barang) {
+                // Hitung stok baru dengan cara menambahkan kembali stok lama, kemudian dikurangi stok baru
+                $stok_awal = $barang->stok + $barang_rusak_lama->jumlah_rusak; // Kembalikan stok lama
+                $stok_akhir = $stok_awal - $jumlah_rusak_baru; // Kurangi stok dengan jumlah baru
+    
+                if ($stok_akhir >= 0) {
+                    // Update stok barang
+                    $this->m_barang->update_stok($kode_barang, $stok_akhir);
+    
+                    // Konversi tanggal ke format 'Y-m-d'
+                    $tanggal_input = date('d/m/Y');
+                    $dateTime = DateTime::createFromFormat('d/m/Y', $tanggal_input);
+                    $tanggal = $dateTime->format('Y-m-d');
+    
+                    // Update data barang rusak
+                    $this->m_barang_rusak->update($id, [
+                        'kode_barang' => $kode_barang,
+                        'nama_barang' => $nama_barang,
+                        'jumlah_rusak' => $jumlah_rusak_baru,
+                        'keterangan' => $keterangan,
+                        'tanggal' => $tanggal,
+                    ]);
+    
+                    $this->session->set_flashdata('success', 'Barang rusak berhasil diupdate!');
+                } else {
+                    $this->session->set_flashdata('error', 'Stok barang tidak cukup!');
+                }
+            } else {
+                $this->session->set_flashdata('error', 'Barang tidak ditemukan!');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Data barang rusak tidak ditemukan!');
+        }
+        redirect('barang_rusak');
+    }
+    
+
+    public function delete($id) {
+        $this->m_barang_rusak->delete($id);
+        $this->session->set_flashdata('success', 'Barang rusak berhasil dihapus!');
+        redirect('barang_rusak');
+    }
 }

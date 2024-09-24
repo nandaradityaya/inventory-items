@@ -39,4 +39,22 @@ class M_barang_rusak extends CI_Model {
         $query = $this->db->get('barang_rusak');
         return $query->row()->jumlah_rusak;
     }
+
+    public function lihat_by_id($id) {
+        $this->db->select('*');
+        $this->db->from('barang_rusak');
+        $this->db->where('id', $id);
+        return $this->db->get()->row();
+    }
+    
+    public function update($id, $data) {
+        $this->db->where('id', $id);
+        $this->db->update('barang_rusak', $data);
+        return $this->db->affected_rows();
+    }    
+
+    public function delete($id) {
+        $this->db->delete('barang_rusak', ['id' => $id]);
+        return $this->db->affected_rows();
+    }
 }
