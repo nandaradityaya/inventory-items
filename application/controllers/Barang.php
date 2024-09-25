@@ -13,11 +13,27 @@ class Barang extends CI_Controller{
 
 	public function index(){
 		$this->data['title'] = 'Data Barang';
-		$this->data['all_barang'] = $this->m_barang->lihat();
+	
+		// Ambil tanggal dari input
+		$tanggal_awal = $this->input->post('tanggal_awal');
+		$tanggal_akhir = $this->input->post('tanggal_akhir');
+	
+		// Format ulang tanggal ke format yang sesuai dengan database (yyyy-mm-dd)
+		if ($tanggal_awal && $tanggal_akhir) {
+			$tanggal_awal_db = date('Y-m-d', strtotime(str_replace('/', '-', $tanggal_awal)));
+			$tanggal_akhir_db = date('Y-m-d', strtotime(str_replace('/', '-', $tanggal_akhir)));
+			$this->data['all_barang'] = $this->m_barang->filter_by_date($tanggal_awal_db, $tanggal_akhir_db);
+		} else {
+			$this->data['all_barang'] = $this->m_barang->lihat();
+		}
+	
+		$this->data['tanggal_awal'] = $tanggal_awal;
+		$this->data['tanggal_akhir'] = $tanggal_akhir;
 		$this->data['no'] = 1;
-
+	
 		$this->load->view('barang/lihat', $this->data);
 	}
+	
 
 	public function tambah(){
 		if ($this->session->login['role'] == 'petugas'){

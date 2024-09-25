@@ -44,24 +44,24 @@
 				<div class="card shadow">
 					<div class="card-header">
 						<div class="d-flex align-items-center justify-content-between">
-						<strong>Daftar Barang</strong>
-						<!-- <form action="<?= site_url('laporan/index') ?>" method="post">
-                            <label for="tanggal">Filter Tanggal:</label>
-                            <input type="text" autocomplete="off" id="tanggal" name="tanggal" value="<?= $tanggal ?>" placeholder="dd/mm/yyyy">
-                            <button type="submit" class="btn btn-primary btn-sm ml-2"><i class="fa fa-filter"></i>&nbsp;&nbsp;Filter</button>
-                        </form> -->
+							<strong>Daftar Barang</strong>
+							<!-- <form action="<?= site_url('laporan/index') ?>" method="post">
+								<label for="tanggal">Filter Tanggal:</label>
+								<input type="text" autocomplete="off" id="tanggal" name="tanggal" value="<?= $tanggal ?>" placeholder="dd/mm/yyyy">
+								<button type="submit" class="btn btn-primary btn-sm ml-2"><i class="fa fa-filter"></i>&nbsp;&nbsp;Filter</button>
+							</form> -->
 
-						<form action="<?= site_url('laporan/index') ?>" method="post">
-    <label for="tanggal_awal">Tanggal Awal:</label>
-    <input type="text" autocomplete="off" id="tanggal_awal" name="tanggal_awal" value="<?= $tanggal_awal ?>" placeholder="dd/mm/yyyy">
-    
-    <label for="tanggal_akhir">Tanggal Akhir:</label>
-    <input type="text" autocomplete="off" id="tanggal_akhir" name="tanggal_akhir" value="<?= $tanggal_akhir ?>" placeholder="dd/mm/yyyy">
-    
-    <button type="submit" class="btn btn-primary btn-sm ml-2">
-        <i class="fa fa-filter"></i>&nbsp;&nbsp;Filter
-    </button>
-</form>
+							<form action="<?= site_url('laporan/index') ?>" method="post">
+								<label for="tanggal_awal">Tanggal Awal:</label>
+								<input type="text" autocomplete="off" id="tanggal_awal" name="tanggal_awal" value="<?= $tanggal_awal ?>" placeholder="dd/mm/yyyy">
+								
+								<label for="tanggal_akhir">Tanggal Akhir:</label>
+								<input type="text" autocomplete="off" id="tanggal_akhir" name="tanggal_akhir" value="<?= $tanggal_akhir ?>" placeholder="dd/mm/yyyy">
+								
+								<button type="submit" class="btn btn-primary btn-sm ml-2">
+									<i class="fa fa-filter"></i>&nbsp;&nbsp;Filter
+								</button>
+							</form>
 
 
 						</div>
@@ -132,36 +132,36 @@
 		});
 	</script>
 
-<!-- Sertakan jQuery dan jQuery UI -->
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<!-- Sertakan jQuery dan jQuery UI -->
+	<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
 
-<script>
-    $(function() {
-        // Inisialisasi datepicker untuk tanggal_awal
-        $("#tanggal_awal").datepicker({
-            dateFormat: "dd/mm/yy", // Format tanggal yang akan ditampilkan
-            changeMonth: true,
-            changeYear: true,
-            onClose: function(selectedDate) {
-                // Atur minimal tanggal untuk tanggal_akhir setelah tanggal_awal dipilih
-                $("#tanggal_akhir").datepicker("option", "minDate", selectedDate);
-            }
-        });
+	<script>
+		$(function() {
+			// Inisialisasi datepicker untuk tanggal_awal
+			$("#tanggal_awal").datepicker({
+				dateFormat: "dd/mm/yy", // Format tanggal yang akan ditampilkan
+				changeMonth: true,
+				changeYear: true,
+				onClose: function(selectedDate) {
+					// Atur minimal tanggal untuk tanggal_akhir setelah tanggal_awal dipilih
+					$("#tanggal_akhir").datepicker("option", "minDate", selectedDate);
+				}
+			});
 
-        // Inisialisasi datepicker untuk tanggal_akhir
-        $("#tanggal_akhir").datepicker({
-            dateFormat: "dd/mm/yy",
-            changeMonth: true,
-            changeYear: true,
-            onClose: function(selectedDate) {
-                // Atur maksimal tanggal untuk tanggal_awal setelah tanggal_akhir dipilih
-                $("#tanggal_awal").datepicker("option", "maxDate", selectedDate);
-            }
-        });
-    });
-</script>
+			// Inisialisasi datepicker untuk tanggal_akhir
+			$("#tanggal_akhir").datepicker({
+				dateFormat: "dd/mm/yy",
+				changeMonth: true,
+				changeYear: true,
+				onClose: function(selectedDate) {
+					// Atur maksimal tanggal untuk tanggal_awal setelah tanggal_akhir dipilih
+					$("#tanggal_awal").datepicker("option", "maxDate", selectedDate);
+				}
+			});
+		});
+	</script>
 
 </body>
 </html>

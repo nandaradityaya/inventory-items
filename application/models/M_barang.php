@@ -94,4 +94,14 @@ class M_barang extends CI_Model{
         $this->db->where('id', $id);
         return $this->db->update($this->_table, ['stok' => $stok]);
     }
+
+	public function filter_by_date($tanggal_awal, $tanggal_akhir) {
+		$this->db->where('DATE(created_at) >=', $tanggal_awal);
+		$this->db->where('DATE(created_at) <=', $tanggal_akhir);
+		$this->db->select('barang.*, kategori.nama_kategori');
+		$this->db->join('kategori', 'barang.id_kategori = kategori.id_kategori', 'left');
+		$this->db->order_by('id', 'DESC');
+		return $this->db->get($this->_table)->result();
+	}
+	
 }
