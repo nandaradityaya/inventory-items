@@ -29,20 +29,29 @@ class Barang_rusak extends CI_Controller {
         $nama_barang = $this->input->post('nama_barang');
         $jumlah_rusak = $this->input->post('jumlah_rusak');
         $keterangan = $this->input->post('keterangan');
-
+    
         // Ambil data barang berdasarkan id
         $barang = $this->m_barang->lihat_by_id($id_barang);
-
+    
         if ($barang) {
             // Kurangi stok barang
             $new_stok = $barang->stok - $jumlah_rusak;
-
+    
             if ($new_stok >= 0) {
+                // Update stok barang
                 $this->m_barang->update_stok_by_id($id_barang, $new_stok);
-
+    
+                // Jika stok barang habis (0), pastikan tidak menghapus data barang
+                if ($new_stok == 0) {
+                    // Logika tambahan jika barang habis, tapi tidak dihapus
+                    // Misalnya, tambahkan flag `habis` atau `stok_kosong`
+                    $this->m_barang->set_barang_habis($id_barang); 
+                }
+    
                 // Tanggal saat ini
                 $tanggal = date('Y-m-d');
-
+    
+                // Tambah data barang rusak
                 $this->m_barang_rusak->tambah([
                     'id_barang' => $id_barang,
                     'kode_barang' => $kode_barang,
@@ -60,6 +69,7 @@ class Barang_rusak extends CI_Controller {
         }
         redirect('barang_rusak');
     }
+    
 
     public function edit($id) {
         $data['title'] = 'Edit Barang Rusak';

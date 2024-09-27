@@ -90,9 +90,27 @@ class M_barang extends CI_Model{
         return $this->db->update($this->_table, ['stok' => $stok]);
     }
 
-	public function update_stok_by_id($id, $stok) {
-        $this->db->where('id', $id);
-        return $this->db->update($this->_table, ['stok' => $stok]);
+	// public function update_stok_by_id($id, $stok) {
+    //     $this->db->where('id', $id);
+    //     return $this->db->update($this->_table, ['stok' => $stok]);
+    // }
+	// Metode untuk menandai barang habis dengan mengubah keterangan
+    public function set_barang_habis($id_barang) {
+        $this->db->set('keterangan', 'Habis');
+        $this->db->where('id', $id_barang);
+        return $this->db->update('barang');
+    }
+
+    // Metode untuk memperbarui stok barang
+    public function update_stok_by_id($id_barang, $new_stok) {
+        $this->db->set('stok', $new_stok);
+        $this->db->where('id', $id_barang);
+        $this->db->update('barang');
+
+        // Jika stok 0, tandai barang habis
+        if ($new_stok == 0) {
+            $this->set_barang_habis($id_barang);
+        }
     }
 
 	public function filter_by_date($tanggal_awal, $tanggal_akhir) {
